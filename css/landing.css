@@ -77,11 +77,12 @@ section:not(.footer){
     text-align: center;
   }
   .content h3{
-    font-size: 4rem;
+    font-size: 3rem;
+    line-height: 3.5rem;
   }
   .content p{
-    font-size: 2.5rem;
-    line-height: 3rem;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
   }
   .content button{
     width: 100%;
@@ -92,16 +93,36 @@ section:not(.footer){
     transform: translateX(-50%);
     bottom: 1.5rem;
   }
+  .image img{
+    height: 45vh;
+  }
 }
 
 @media (max-width: 830px){
   .content h3{
-    font-size: 3rem;
+    font-size: 2.6rem;
+    line-height: 3rem;
   }
   .content p{
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
   }
+  .content button{
+    font-size: 2rem;
+    height: 4rem;
+  }
+}
+
+@media (max-width: 650px){
+  .content h3{
+    font-size: 2.3rem;
+    line-height: 2.6rem;
+  }
+  .content p{
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+  
 }
 
 @media (max-width: 550px){
@@ -110,6 +131,7 @@ section:not(.footer){
   }
   .content h3{
     font-size: 1.5rem;
+    line-height: 1.7rem;
   }
   .content p{
     font-size: 1.1rem;
@@ -135,14 +157,15 @@ section:not(.footer){
     flex-flow: column; -속되어서 안해되될듯*/
   }
   .content h3{
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
   .content p{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.5rem;
   }
   .content button{
-    bottom: 2rem;
+    bottom: 1.2rem;
+    height: 2.2rem;
   }
 }
 
@@ -151,9 +174,15 @@ section:not(.footer){
     padding: 1rem 1rem;
   }
   .content h3{
-    font-size: 1.7rem;
+    font-size: 1.5rem;
+  }
+  .content p{
+    font-size: 1rem;
+    line-height: 1.2rem;
   }
   .content button{
+    height: 2.5rem;
+    font-size: 1rem;
     bottom: 1rem;
   }
 }
@@ -161,6 +190,7 @@ section:not(.footer){
 @media (max-width: 300px){ /*갤럭시 폴드*/
   .content h3{
     font-size: 1.2rem;
+    line-height: 1.5rem;
   }
   .content p{
     font-size: .8rem;
