@@ -2,7 +2,7 @@
 @import url('global.css');
 @import url('header.css');
 @import url('footer.css');
-@import url('animaition.css');
+@import url('animation.css');
 
 /* 서비스, 스토리, 연락처 공통적용 */
 section:not(.footer){
@@ -109,12 +109,12 @@ section:not(.footer){
 
 @media (max-width: 830px){
   .content h3{
-    font-size: 2.6rem;
-    line-height: 3rem;
+    font-size: 2.3rem;
+    line-height: 2.7rem;
   }
   .content p{
-    font-size: 1.8rem;
-    line-height: 2.6rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
   }
   .content button{
     font-size: 2rem;
@@ -128,7 +128,7 @@ section:not(.footer){
     line-height: 2.6rem;
   }
   .content p{
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     line-height: 2.2rem;
   }
   
