@@ -1,0 +1,264 @@
+@import url('reset.css');
+@import url('global.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('animation.css');
+
+/* 종 모양 아이콘 스타일링 추가 */
+header .navbar ul li .material-icons{
+  font-size: 2rem;
+}
+
+/* 아바타 스타일링 추가 */
+header .navbar ul li .account img{
+  width: 2rem; height: 2rem;
+  border-radius: 50%;
+}
+
+/* 푸터 */
+.footer{
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  transition: 1s ease-in-out;
+}
+.footer.hide{
+  opacity: 0;
+  height: 0;
+}
+
+/* 공통 스타일 */
+.bottom-line{
+  border-bottom: 1px solid #eee;
+}
+.padding{
+  padding: 2rem 0;
+}
+
+/* 컨텐츠 섹션 */
+.blog-container{
+  width: 70vw;
+  margin: 0 auto;
+  /* background-color: #333; */
+}
+
+/* 구독중/구독자 */
+.blog-container .follow ul{
+  display: flex;
+  flex-wrap: wrap;
+}
+.blog-container .follow ul li{
+  padding-right: 1.2rem;
+  font-size: 1.2rem;
+}
+.blog-container .follow ul li a{
+  padding-right: .3rem;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+.blog-container .follow ul li a:hover{
+  text-decoration: underline;
+}
+
+/* 최근 내가 업로드한 글 */
+.blog-container .blog{
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column-reverse;
+  padding: 2rem 1rem;
+  margin-bottom: 2.5rem;
+  border-bottom: none;
+  box-shadow: 0 0 .2rem rgba(0, 0, 0, .3);
+  transition: .5s;
+}
+.blog-container .blog > div > ul{
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+.blog-container .blog .left,
+.blog-container .blog .right{
+  width: 100%;
+  min-width: 100%;
+  opacity: 1;
+  transform: none; /* animation과 충돌이 일어나 다시 덮어쓰여 사진이 보이도록 설정 */
+  /* background-color: #333; */
+}
+.blog-container .blog .left .posting-time{
+  margin-top: 1rem;
+  margin-bottom: .3rem;
+  color: #aaa;
+}
+.blog-container .blog .left .category-name a{
+  color: var(--primary-color);
+}
+.blog-container .blog .left .category-name a:hover{
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+.blog-container .blog .left .likes{
+  margin-right: .5rem ;
+}
+.blog-container .blog .left span{
+  color: var(--primary-color);
+}
+.blog-container .blog .left ul{
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: .9rem;
+}
+.blog-container .blog .left ul .posting-time {
+  margin: 0;
+}
+.blog-container .blog .middle{
+  flex-grow: 1;
+  padding: 0;
+  margin: 2rem 0;
+}
+.blog-container .blog .middle > ul h3{
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.blog-container .blog .middle > ul p{
+  padding: 1rem 0;
+  line-height: 1.3rem;
+  font-size: 1rem;
+  color: gray;
+}
+.blog-container .blog .middle .account{
+  display: flex;
+  align-items: center;
+  font-size: .8rem;
+}
+.blog-container .blog .middle .account img{
+  width: 2rem; height: 2rem;
+  margin-right: .5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  object-fit: cover;
+}
+.blog-container .blog .middle .account span{
+  /* font-size: .9rem; */
+  color: #bbb;
+  margin-left: .5rem ;
+}
+.blog-container .blog .middle >ul ul{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+.blog-container .blog .middle >ul ul button{
+  width: 5rem; height: 2rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  background-color: transparent;
+  transition: .2s;
+  padding: 0;
+}
+.blog-container .blog .middle >ul ul button:hover{
+  box-shadow: 0 0 .1rem rgba(0, 0, 0, .5);
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+.blog-container .blog .right ul,
+.blog-container .blog .right ul li{
+  height: 100%;
+}
+.blog-container .blog .right ul li img{
+  width:100%; height: 100%; 
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 블로그 수평정렬 */
+.blog-container > div:not(.follow){
+  position: relative; /* 내부에 있는 버튼 정렬하기 위함 */
+}
+.blog-container > div:not(.follow) > ul{
+  display: flex; 
+}
+.blog-container > div:not(.follow) > ul > li:nth-child(2){
+  margin: 0 2rem;
+}
+.blog-container > div:not(.follow) > h3{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+/* 더보기 버튼 */
+.blog-container > div:not(.follow) > a button{
+  width: 5rem; height: 2rem;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  background-color: #333;
+  box-shadow: 0 0 .3rem rgba(0, 0, 0, .3);
+  position: absolute;
+  bottom: 1.5rem; right: 0;
+  transition: .2s;
+}
+.blog-container > div:not(.follow) > a button:hover{
+  background-color: var(--secondary-color);
+  box-shadow: none;
+}
+.noti-msg{
+  background-color: var(--primary-color);
+  color: #333;
+  padding: .5rem;
+  position: fixed;
+  top: 63px;
+  right: 41px;
+  display: block;
+  z-index: 5;
+  border-radius: 10px;
+  transition: .3s;
+}
+
+/* 반응형 웹 */
+@media(max-width: 1030px){
+  .blog-container{
+    width: 90vw;
+  }
+  .footer .icons{
+    padding: 1.5rem 0;
+  }
+}
+@media (max-width: 420px){
+  header{
+    padding: 1rem 1rem;
+  }
+  .blog-container > div:not(.follow) > ul{
+    flex-flow: column;
+  }
+  .blog-container > div:not(.follow) > ul > li:nth-child(2){
+    margin: 0;
+  }
+}
+@media (max-width: 300px){
+  header{
+    padding: .5rem .5rem;
+  }
+  header .logo{
+    font-size: 1rem;
+  }
+  header .logo i{
+    font-size: 2rem;
+  }
+  header .navbar ul li{
+    margin: 0 .5rem
+  }
+  .blog-container > div:not(.follow) > h3{
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .footer .icons{
+    padding: 1rem 0;
+  }
+  .footer .icons .scroll-up{
+    margin-right: .2rem;
+  }
+}
