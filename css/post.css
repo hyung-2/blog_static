@@ -23,11 +23,11 @@ header .toolbox > div {
   border-right: 2px solid #ddd;
   padding: 0 .5rem;
 }
-header .toolbox > div > a {
+header .toolbox > div a {
   margin: 0 .2rem;
   transition: .3s ;
 }
-header .toolbox > div > a:hover{
+header .toolbox > div a:hover{
   color: var(--primary-color);
 }
 header .toolbox > div > a label{
@@ -144,4 +144,89 @@ header .toolbox > div > a label{
 .post-container .post-tags input.dark{
   color: #fff;
   background-color: #333;
+}
+
+/* 드롭다운 메뉴 */
+.select-menu{
+  max-width: 2rem;
+  display: inline-flex; 
+  flex-flow: column;
+  align-items: center;
+  position: relative; /* 컨테이너 기준으로 드롭다운 메뉴 배치*/
+}
+.select-menu-dropdown{
+  background-color: #fff;
+  position: absolute;
+  top: 45px; /* 아이콘 높이만큼 아래쪽에 드롭다운 메뉴 배치*/
+  border: 1px solid #ddd;
+  padding: 1rem;
+  display: none;
+  user-select: none; /* 현재 편집기에 선택된 영역이 클릭한 위치로 바뀌지 않도록 방지*/
+}
+.select-menu-dropdown::before{
+  content: '';
+  width: 1.4rem;
+  height: 1.4rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-bottom: none;
+  position: absolute; /*부모가 relative 또는 absolute 이면 그에 맞춰서 자식도 absolute*/
+  left: 50%; 
+  transform: translateX(-50%) rotateZ(45deg);
+  top: -0.72rem;
+}
+.select-menu-dropdown.show{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 색상 드롭다운 */
+.color-box{
+  width: 10rem;
+}
+.color-box span{
+  width: 1.5rem; height: 1.5rem;
+  border-radius: 50%;
+  flex: 0 0 auto; /* 요소 크기가 늘어나지도 줄어들지도 않고 본래크기 유지*/
+  margin: .2rem;
+  cursor: pointer;
+}
+.color-box.show{
+  flex-wrap: wrap;
+}
+
+/* 폰트크기 드롭다운 */
+.font-box{
+  width: 12rem;
+}
+.font-box span{
+  width: 100%;
+  padding: .5rem;
+  cursor: pointer;
+}
+.font-box span:hover{
+  background-color: #eee;
+}
+.font-box.show{
+  flex-flow: column;
+}
+
+/* 이모티콘 드롭다운 */
+.imoticon-box{
+  width: 12rem;
+}
+.imoticon-box span{
+  font-size: 1.5rem;
+  margin: .2rem;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.imoticon-box.show{
+  flex-wrap: wrap;
+}
+
+.active-icon{
+  color: var(--primary-color);
 }
