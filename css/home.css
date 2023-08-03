@@ -224,11 +224,22 @@ header .navbar ul li a button:hover{
   padding: .5rem;
   position: fixed;
   top: 63px;
-  right: 50px;
+  right: 62px;
   display: block;
   z-index: 5;
   border-radius: 10px;
   transition: .3s;
+}
+/* 알림메세지 말풍선처럼 */
+.noti-msg::before{
+  content: '';
+  width: 10px; height: 10px;
+  background-color: var(--primary-color);
+  /* border: 1px solid rebeccapurple; */
+  position: absolute;
+  top: -5px; left: 8%;
+  transform: rotate(45deg);
+  z-index: 4;
 }
 
 /* 반응형 웹 */

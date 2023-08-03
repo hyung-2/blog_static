@@ -146,35 +146,35 @@ window.addEventListener('load', (event) => {
     console.log(event.target)
     switch(event.target.innerText){
       case 'format_bold': 
-        activeIcon(event.target)
+        activeIconToggle(event.target)
         changeTextFormat('bold') //사용자가 선택한 텍스트가 볼드체로 변경
         break
       case 'format_italic':
-        activeIcon(event.target)
+        activeIconToggle(event.target)
         changeTextFormat('italic')
         break
       case 'format_underlined':
-        activeIcon(event.target)
+        activeIconToggle(event.target)
         changeTextFormat('underline')
         break
       case 'format_strikethrough':
-        activeIcon(event.target)
+        activeIconToggle(event.target)
         changeTextFormat('strikeThrough')
         break
       case 'format_color_text':
-        activeIcon(event.target)
+        activeIconToggle(event.target)
         // changeTextFormat('foreColor', 'orange')
         hideDropdown(toolBox, 'format_color_text')
         colorBoxes[0].classList.toggle('show')
         break
       case 'format_color_fill':
-        activeIcon(event.target)
+        activeIconToggle(event.target)
         // changeTextFormat('backColor', 'black')
         hideDropdown(toolBox, 'format_color_fill')
         colorBoxes[1].classList.toggle('show')
         break
       case 'format_size':
-        activeIcon(event.target)
+        activeIconToggle(event.target)
         // changeTextFormat('fontSize', 7)
         hideDropdown(toolBox, 'format_size')
         fontBox.classList.toggle('show')
@@ -191,7 +191,6 @@ window.addEventListener('load', (event) => {
     console.log(event.target.innerText)
     switch(event.target.innerText){
       case 'format_align_left':
-        activeIcon(event.target)
         changeTextFormat('justifyLeft')
         break
       case 'format_align_center':
@@ -216,6 +215,7 @@ window.addEventListener('load', (event) => {
       case 'sentiment_satisfied':
         hideDropdown(toolBox, 'sentiment_satisfied')
         imoticonBox.classList.toggle('show')
+        activeIconToggle(event.target)
         break
       case 'table_view':
         break
@@ -281,22 +281,22 @@ function changeTextFormat(style, param){
 }
 
 //현재 사용중인 tool 색상 변경
-function activeIcon(event){
+function activeIconToggle(event){
   event.classList.toggle('active-icon')
 }
 
 //드롭다운 숨기기
 function hideDropdown(toolbox, currentDropdown){
   const dropdown = toolbox.querySelector('.select-menu-dropdown.show')
-  // const icon = dropdown.previousSibling
   if(dropdown){
     console.log(currentDropdown) //현재 클릭한 아이콘
     console.log(dropdown?.parentElement)}
     //현재 text-tool 요소 안쪽에서 열려있는 드롭다운 메뉴 조회
-  if(dropdown && dropdown.parentElement.querySelector('a span').innerText !== currentDropdown){
-    dropdown.classList.remove('show')
-    icon.classList.remove('active-icon')
-  }
+    if(dropdown && dropdown.parentElement.querySelector('a span').innerText !== currentDropdown){
+      dropdown.classList.remove('show')
+      // dropdown.previousElementSibling.firstChild.classList.remove('active-icon')
+      console.log(dropdown)
+    }
 }
 
 //드롭다운 외부 클릭시 창 닫히기
@@ -304,8 +304,11 @@ document.addEventListener('click', function(e){
   console.log(e.target)
   //현재 열려있는 드롭다운 메뉴 조회
   const dropdown = document.querySelector('.select-menu-dropdown.show')
+  console.log(dropdown.parentElement)
   if(dropdown && !dropdown.contains(e.target)){
     dropdown.classList.remove('show')
+    dropdown.previousElementSibling.firstChild.classList.remove('active-icon')
+    dropdown.parentElement.classList.remove('active-icon')
   }
 })
 
@@ -315,6 +318,7 @@ function changeColor(event, mode){
 
   if(!event.target.classList.contains('select-menu-dropdown')){
     console.log(mode, event.target)
+    console.log(event.target.parentNode.parentNode)
     switch(mode){
       case 'foreground':
         changeTextFormat('foreColor', event.target.style.backgroundColor) //글자색 변경
@@ -324,6 +328,9 @@ function changeColor(event, mode){
         break  
     }
     event.target.parentElement.classList.remove('show') //색상 클릭시 드롭다운 숨기기
+    // console.log(event.target.parentNode.previousElementSibling.firstChild)
+    event.target.parentNode.previousElementSibling.firstChild.classList.remove('active-icon')
+    event.target.parentNode.parentNode.classList.remove('active-icon')
   }
 }
 
@@ -334,6 +341,8 @@ function changeFontSize(event){
   if(!event.target.classList.contains('select-menu-dropdown')){
     changeTextFormat('fontSize', event.target.id) //폰트 크기 변경
     event.target.parentElement.classList.remove('show') //색상 클릭시 드롭다운 숨기기
+    event.target.parentNode.previousElementSibling.firstChild.classList.remove('active-icon')
+    event.target.parentNode.parentNode.classList.remove('active-icon')
   }
 }
 
@@ -344,5 +353,6 @@ function addImotion(event){
   if(!event.target.classList.contains('select-menu-dropdown')){
     changeTextFormat('insertText', event.target.innerText)
     event.target.parentElement.classList.remove('show')
+    event.target.parentNode.previousElementSibling.firstChild.classList.remove('active-icon')
   }
 }
